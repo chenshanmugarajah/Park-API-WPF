@@ -28,10 +28,8 @@ namespace WPF
         {
             Thread.Sleep(2000);
             InitializeComponent();
-            Thread.Sleep(2000);
             cm.GetParks();
             cm.GetAnimals();
-
         }
 
         public void displayParks()
