@@ -24,14 +24,16 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Animal>>> GetAnimal()
         {
-            return await _context.Animal.ToListAsync();
+            return await _context.Animal.Include("Park").ToListAsync();
         }
 
         // GET: api/Animals/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Animal>> GetAnimal(int id)
         {
-            var animal = await _context.Animal.FindAsync(id);
+            //var animal = await _context.Animal.FindAsync(id);
+            // Item item = await db.Items.Include("Tags").SingleOrDefaultAsync(i => i.Id == id);
+            var animal = await _context.Animal.Include("Park").SingleOrDefaultAsync(a => a.ParkId == id);
 
             if (animal == null)
             {
