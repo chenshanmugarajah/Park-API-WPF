@@ -25,10 +25,11 @@ create table Animal (
 	AnimalFact nvarchar(255),
 	AnimalWeightTons decimal,
 	AnimalDiet nvarchar(50),
+	AnimalImage nvarchar(2083),
 	ParkId int references Park(ParkId)
 )
 
-insert into Animal values ('Tyrannosaurus Rex', 'The Tyrannosaurus rex can bite with a force of 12,800 pounds.', 9, 'Carnivore', 1)
-insert into Animal values ('Triceratops', 'The skull of triceratops was one-third the length of its entire body', 12, 'Herbivore', 2)
-insert into Animal values ('Tiger', 'Largest extant cat species and a memeber of the genus Panthera', 0.3, 'Carnivore', 3)
+insert into Animal values ('Tyrannosaurus Rex', 'The Tyrannosaurus rex can bite with a force of 12,800 pounds.', 9,'Carnivore', 'https://vignette.wikia.nocookie.net/jurassicpark/images/f/f8/T-Rex.png/revision/latest?cb=20141128030334', 1)
+insert into Animal values ('Triceratops', 'The skull of triceratops was one-third the length of its entire body', 12, 'Herbivore', 'https://vignette.wikia.nocookie.net/jurassicworld-evolution/images/9/96/Trikethumb.png/revision/latest?cb=20190817153424', 2)
+insert into Animal values ('Tiger', 'Largest extant cat species and a memeber of the genus Panthera', 0.3, 'Carnivore', 'https://i.pinimg.com/originals/90/9a/43/909a4354eeb243a200772e0b0a841c50.png', 3)
 

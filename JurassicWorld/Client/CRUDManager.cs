@@ -47,15 +47,16 @@ namespace Client
 
         public async void AddPark(Park park)
         {
-            Console.WriteLine("===\tAdding New Park\t===");
+            Console.WriteLine("===\tTryin to add New Park\t===");
 
-            if (!ParkExists(park.ParkId))
+            if (ParkExists(park.ParkId))
             {
                 Console.WriteLine("==\tPark Exists\t==");
                 return;
             }
             else
             {
+                Console.WriteLine("==\tAdding park\t==");
                 using (var httpclient = new HttpClient())
                 {
                     // Convert JSON to String Object
@@ -66,7 +67,8 @@ namespace Client
                     httpContent.Headers.ContentType.CharSet = "UTF-8";
 
                     // Posting new park into database
-                    var response = await httpclient.PostAsync(url, httpContent);
+                    var response = await httpclient.PostAsync(url + "parks", httpContent);
+                    Console.WriteLine(response.StatusCode);
                     if (response.IsSuccessStatusCode)
                     {
                         Console.WriteLine("===\tSuccessfully Added\t===");
@@ -163,27 +165,24 @@ namespace Client
 
         public async void UpdatePark(int targetId, Park updatedPark)
         {
-            GetPark(targetId);
-            Thread.Sleep(2000);
-
             Console.WriteLine("===\tUpdating Park\t===");
+            var httpContent = new StringContent(JsonConvert.SerializeObject(updatedPark));
 
-            var ParkObj = JsonConvert.SerializeObject(updatedPark);
-            var httpContent = new StringContent(ParkObj);
-
+            // Setting request headers
             httpContent.Headers.ContentType.MediaType = "application/json";
             httpContent.Headers.ContentType.CharSet = "UTF-8";
 
             using (var httpclient = new HttpClient())
             {
-                var response = await httpclient.PutAsync(url + "parks/" + targetId, httpContent);
+                var targetUrl = url + "parks/" + targetId;
+                var response = await httpclient.PutAsync(targetUrl, httpContent);
                 if (response.IsSuccessStatusCode)
                 {
                     Console.WriteLine("===\tSuccessfully Updated\t===");
                 }
                 else
                 {
-                    Console.WriteLine(response);
+                    Console.WriteLine("===\tUnsuccessful Update\t===");
                 }
                 park = null;
             }

@@ -35,6 +35,8 @@ namespace API.Models
 
                 entity.Property(e => e.AnimalFact).HasMaxLength(255);
 
+                entity.Property(e => e.AnimalImage).HasMaxLength(2083);
+
                 entity.Property(e => e.AnimalName).HasMaxLength(50);
 
                 entity.Property(e => e.AnimalWeightTons).HasColumnType("decimal(18, 0)");

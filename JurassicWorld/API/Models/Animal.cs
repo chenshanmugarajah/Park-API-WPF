@@ -10,6 +10,7 @@ namespace API.Models
         public string AnimalFact { get; set; }
         public decimal? AnimalWeightTons { get; set; }
         public string AnimalDiet { get; set; }
+        public string AnimalImage { get; set; }
         public int? ParkId { get; set; }
 
         public virtual Park Park { get; set; }
