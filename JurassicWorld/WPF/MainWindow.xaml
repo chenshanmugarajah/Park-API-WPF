@@ -6,12 +6,41 @@
         xmlns:local="clr-namespace:WPF"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="MainWindow" Height="900" Width="1600" FontSize="40">
+        Title="MainWindow" Height="900" Width="1600" FontSize="25">
 
-    <Grid Background="Pink">
-        <ListBox x:Name="ListBoxParks"  Margin="64,52,800,53" SelectionChanged="ListBoxParks_SelectionChanged"/>
-        <Label x:Name="TestLabel" Content="Started.." HorizontalAlignment="Left" Height="154" Margin="872,235,0,0" VerticalAlignment="Top" Width="656" />
-        <Button Content="Get Parks" HorizontalAlignment="Left" Height="142" Margin="872,52,0,0" VerticalAlignment="Top" Width="656" Click="GetParks_Clicked"/>
+    <Grid Background="#363636">
+        <Rectangle Fill="White" HorizontalAlignment="Left" Height="261" Margin="726,552,0,0" Stroke="Black" VerticalAlignment="Top" Width="424"/>
+        <Button x:Name="ButtonLoadParkAndAmimal" Content="Load All" HorizontalAlignment="Left" Margin="102,73,0,0" VerticalAlignment="Top" Height="76" Width="207" Click="LoadAll_Clicked"/>
+        <Button x:Name="ButtonAddPark" Content="Add Park" HorizontalAlignment="Left" Margin="102,199,0,0" VerticalAlignment="Top" Height="76" Width="207" Click="AddPark_Clicked"/>
+        <Button x:Name="ButtonUpdatePark" Content="Update Park" HorizontalAlignment="Left" Margin="102,302,0,0" VerticalAlignment="Top" Height="76" Width="207" Click="UpdatePark_Clicked"/>
+        <Button x:Name="ButtonDeletePark" Content="Delete Park" HorizontalAlignment="Left" Margin="102,0,0,0" VerticalAlignment="Center" Height="76" Width="207" Click="DeleteParks_Clicked"/>
+
+        <Button x:Name="ButtonAddAnimal" Content="Add Animal" HorizontalAlignment="Left" Margin="102,552,0,0" VerticalAlignment="Top" Height="76" Width="207"/>
+        <Button x:Name="ButtonUpdateAnimal" Content="Update Animal" HorizontalAlignment="Left" Margin="102,650,0,0" VerticalAlignment="Top" Height="76" Width="207"/>
+        <Button x:Name="ButtonDeleteAnimal" Content="Delete Animal" HorizontalAlignment="Left" Margin="102,741,0,0" VerticalAlignment="Top" Height="76" Width="207"/>
+
+        <DataGrid x:Name="DataGridParks" Margin="363,199,102,467" SelectionChanged="DataGridParks_SelectionChanged" AutoGenerateColumns="False" FontSize="25">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding ParkName}" />
+                <DataGridTextColumn Header="Description" Binding="{Binding ParkDescription}" />
+                <DataGridTextColumn Header="Location" Binding="{Binding ParkLocation}" />
+                <DataGridTextColumn Header="Capacity" Binding="{Binding ParkCapacity}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <ListBox x:Name="ListBoxAnimals" HorizontalAlignment="Left" Height="265" Margin="363,552,0,0" VerticalAlignment="Top" Width="342" SelectionChanged="ListBoxAnimals_SelectionChanged" />
+        <TextBox x:Name="LabelAnimalName" TextWrapping="Wrap" Text="Animal Name:" HorizontalAlignment="Left" Margin="733,567,0,0" VerticalAlignment="Top" Width="410" BorderBrush="White" />
+        <TextBox x:Name="LabelAnimalFact" TextWrapping="Wrap"  Text="Animal Fact:" HorizontalAlignment="Left" Margin="733,607,0,0" VerticalAlignment="Top" Height="109" Width="410" BorderBrush="White" />
+        <TextBox x:Name="LabelAnimalWeight" TextWrapping="Wrap" Text="Animal Weight:" HorizontalAlignment="Left" Margin="733,721,0,0" VerticalAlignment="Top" Width="410" BorderBrush="White" />
+        <TextBox x:Name="LabelAnimalDiet" TextWrapping="Wrap" Text="Animal Diet:" HorizontalAlignment="Left" Margin="733,761,0,0" VerticalAlignment="Top" Width="410" Height="37" BorderBrush="White" />
+
+        <Image x:Name="AnimalImage" Source="/images/logo.png" HorizontalAlignment="Left" Height="196" Margin="1178,617,0,0" VerticalAlignment="Top" Width="322" />
+
+        <Label Content="Park Manager" HorizontalAlignment="Left" Margin="363,73,0,0" VerticalAlignment="Top" Height="76" Width="1135" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="45" Foreground="White"/>
+
+        <TextBox x:Name="TBParkName" HorizontalAlignment="Left" Height="101" Margin="363,427,0,0" Text="Name" TextWrapping="Wrap" VerticalAlignment="Top" Width="210"/>
+        <TextBox x:Name="TBParkDescription" HorizontalAlignment="Left" Height="101" Margin="593,427,0,0" Text="Description" TextWrapping="Wrap" VerticalAlignment="Top" Width="453"/>
+        <TextBox x:Name="TBParkLocation" HorizontalAlignment="Left" Height="101" Margin="1065,427,0,0" Text="Location" TextWrapping="Wrap" VerticalAlignment="Top" Width="207"/>
+        <TextBox x:Name="TBParkCapacity" HorizontalAlignment="Left" Height="101" Margin="1291,427,0,0" Text="Capacity" TextWrapping="Wrap" VerticalAlignment="Top" Width="207"/>
 
     </Grid>
 </Window>

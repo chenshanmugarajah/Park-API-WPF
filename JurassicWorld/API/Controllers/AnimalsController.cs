@@ -31,8 +31,6 @@ namespace API.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Animal>> GetAnimal(int id)
         {
-            //var animal = await _context.Animal.FindAsync(id);
-            // Item item = await db.Items.Include("Tags").SingleOrDefaultAsync(i => i.Id == id);
             var animal = await _context.Animal.Include("Park").SingleOrDefaultAsync(a => a.ParkId == id);
 
             if (animal == null)
