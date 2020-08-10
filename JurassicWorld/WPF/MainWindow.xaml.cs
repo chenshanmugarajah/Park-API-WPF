@@ -59,16 +59,18 @@ namespace WPF
             if (ListBoxAnimals.SelectedItem != null)
             {
                 Animal animal = (Animal)ListBoxAnimals.SelectedItem;
-                LabelAnimalFact.Content = $"Animal Fact: {animal.AnimalFact}";
-                LabelAnimalDiet.Content = $"Animal Diet: {animal.AnimalDiet}";
-                LabelAnimalWeight.Content = $"Animal Weight: {animal.AnimalWeightTons} tons";
+                LabelAnimalName.Text = $"Aniaml Name: {animal.AnimalName}";
+                LabelAnimalFact.Text = $"Animal Fact: {animal.AnimalFact}";
+                LabelAnimalDiet.Text = $"Animal Diet: {animal.AnimalDiet}";
+                LabelAnimalWeight.Text = $"Animal Weight: {animal.AnimalWeightTons} tons";
                 AnimalImage.Source = new BitmapImage(new Uri(animal.AnimalImage));
                 AnimalImage.Margin = new Thickness(1178, 552, 0, 0);
             } else
             {
-                LabelAnimalFact.Content = $"Animal Fact:";
-                LabelAnimalDiet.Content = $"Animal Diet:";
-                LabelAnimalWeight.Content = $"Animal Weight:";
+                LabelAnimalName.Text = "Animal Name:";
+                LabelAnimalFact.Text = $"Animal Fact:";
+                LabelAnimalDiet.Text = $"Animal Diet:";
+                LabelAnimalWeight.Text = $"Animal Weight:";
                 AnimalImage.Margin = new Thickness(1178, 617, 0, 0);
             }
 
